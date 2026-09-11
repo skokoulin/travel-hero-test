@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      ЭТОТ ФАЙЛ — ШАБЛОН ВСЕХ СТРАНИЦ САЙТА, А НЕ ТОЛЬКО ГЛАВНОЙ.
+      scripts/prerender.mjs берёт собранный index.html и для каждого из 187 адресов
+      подставляет свои title, description, canonical, og:title, og:description, og:url.
+      Всё остальное, что стоит здесь в <head>, попадает на КАЖДУЮ страницу.
+
+      Из-за этого менять разметку тегов ниже нужно осторожно: пререндер ищет их
+      регулярками и ждёт именно такой порядок атрибутов — сначала name/rel/property,
+      потом content/href. Переставите атрибуты местами — подстановка молча перестанет
+      срабатывать, и все страницы уйдут в индекс с описанием и canonical главной.
+
+      И по той же причине здесь, в комментарии, НЕЛЬЗЯ писать примеры этих тегов
+      целиком: регулярка находит первое совпадение в файле, и подстановка уходит
+      в комментарий вместо настоящего тега. На этом я уже один раз попался.
+    -->
+
+    <link rel="icon" type="image/svg+xml" href="/travel-hero-test/favicon.svg" />
+    <link rel="apple-touch-icon" href="/travel-hero-test/apple-touch-icon.png" />
+    <meta name="theme-color" content="#7EEEAF" />
+
+    <title>Travel Hero — карта проверенных мест в путешествиях</title>
+    <meta name="description" content="Карты городов и островов с проверенными местами: пляжи, храмы, водопады, смотровые. Точные координаты, цены и советы — всё собрано вручную." />
+    <link rel="canonical" href="https://travelhero.ru/" />
+
+    <!-- Превью ссылки в мессенджерах и соцсетях. og:image один на весь сайт;
+         страница может подставить свою обложку через useSeo({ image }). -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Travel Hero" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content="Travel Hero — карта проверенных мест в путешествиях" />
+    <meta property="og:description" content="Карты городов и островов с проверенными местами: пляжи, храмы, водопады, смотровые." />
+    <meta property="og:url" content="https://travelhero.ru/" />
+    <meta property="og:image" content="https://travelhero.ru/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Храм Улун Дану Братан на озере, Бали" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://travelhero.ru/og-cover.jpg" />
+
+    <!-- Фотографии лежат в Object Storage: соединение открывается заранее,
+         чтобы первый кадр не ждал DNS и TLS (скорость — фактор ранжирования). -->
+    <link rel="preconnect" href="https://travelhero.storage.yandexcloud.net" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://tiles.openfreemap.org" />
+
+    <!--
+      ПОДТВЕРЖДЕНИЕ ПРАВ НА САЙТ. После деплоя Яндекс Вебмастер и Google Search
+      Console выдадут по строке вида <meta name="yandex-verification" content="…">
+      и <meta name="google-site-verification" content="…">. Вставить их сюда,
+      строки приходят из личных кабинетов — выдумать их нельзя.
+    -->
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://travelhero.ru/#website",
+            "url": "https://travelhero.ru/",
+            "name": "Travel Hero",
+            "description": "Карты городов и островов с проверенными местами для путешественников",
+            "inLanguage": "ru-RU",
+            "publisher": { "@id": "https://travelhero.ru/#org" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://travelhero.ru/#org",
+            "name": "Travel Hero",
+            "url": "https://travelhero.ru/",
+            "logo": "https://travelhero.ru/apple-touch-icon.png",
+            "email": "hello@travelhero.ru",
+            "sameAs": [
+              "https://t.me/travel_hero",
+              "https://vk.ru/travelhero",
+              "https://dzen.ru/travelhero"
+            ]
+          }
+        ]
+      }
+    </script>
+    <script type="module" crossorigin src="/travel-hero-test/assets/index-CMuf7_kS.js"></script>
+    <link rel="stylesheet" crossorigin href="/travel-hero-test/assets/index-BTL3WxK_.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
